@@ -51,34 +51,14 @@ A modern, lightweight React dashboard application built with Vite for fast devel
    yarn install
    ```
 
-3. **Environment Setup**
-   Create a `.env` file in the root directory and add your configuration:
-   ```env
-   VITE_API_BASE_URL=http://localhost:3001/api
-   VITE_APP_TITLE=Code Quest Dashboard
-   VITE_ENVIRONMENT=development
-   ```
-
-4. **Database Setup** (if using local backend)
-   ```bash
-   # Create PostgreSQL database
-   createdb codequest_dashboard
-   
-   # Run database migrations
-   npm run db:migrate
-   
-   # Seed initial data
-   npm run db:seed
-   ```
-
-5. **Start the development server**
+3. **Start the development server**
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-6. **Open your browser**
+4. **Open your browser**
    Navigate to `http://localhost:5173` to view the application
 
 ### Build for Production
