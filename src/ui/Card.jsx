@@ -65,9 +65,9 @@ function Card({category ,image,onClick}) {
     )
 }
 Card.propTypes = {
-    category: PropTypes.string.isRequired,
-    image:PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+    category: PropTypes.string,
+    image:PropTypes.string,
+    onClick: PropTypes.func,
 }
 
 export default Card

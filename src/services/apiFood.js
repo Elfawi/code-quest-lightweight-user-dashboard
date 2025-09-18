@@ -18,3 +18,14 @@ export async function getCategory(categoryName) {
     if(error) throw new Error("Cannot fetch category");
     return category;
 }
+export async function addItemToMenu(item) {
+    console.log(item);
+    const {data:food,error} = await supabase.from('foods').insert([item]);
+    if(error) throw new Error("Cannot add item to menu");
+    return food;
+}
+export async function deleteFood(id){
+    const {data, error} = await supabase.from('foods').delete().eq('foodid',id);
+    if(error) throw new Error("Cannot delete item");
+    return data;
+}

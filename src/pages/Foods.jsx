@@ -17,7 +17,6 @@ grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
 function Foods() {
     
     const {foodCategory,isLoading}= useFoodCategory();
-    console.log(foodCategory)
     const back = useMoveBack();
     if(isLoading) return <Spinner/>
     return (

@@ -27,7 +27,6 @@ function Orders() {
     <Row type="horizontal">
       <Heading as="h1" ref={headingRef}>All orders</Heading>
       <Search search={search} setSearch={setSearch} placeholder="Search by customer name or order id or food name"/>
-      {/* <CabinTableOperations /> */}
     </Row>
     <Row>
       <OrdersTable search={search}/>

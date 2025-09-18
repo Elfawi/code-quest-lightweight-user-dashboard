@@ -11,6 +11,5 @@ const {categoryName}=useParams();
     queryKey: ["category",categoryName],
     queryFn:()=> getCategory(categoryName),
   });
-  console.log(foodCategory)
   return { foodCategory, isLoading, error };
 }
