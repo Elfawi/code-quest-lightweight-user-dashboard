@@ -10,7 +10,7 @@ import CategorySalesChart from "./CategorySalesChart";
 const StyledDashboardLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  /* grid-template-rows: auto auto auto; */
+  grid-template-rows: auto auto auto;
   gap: 2.4rem;
   @media(max-width:1100px){
   grid-template-rows: auto auto auto;

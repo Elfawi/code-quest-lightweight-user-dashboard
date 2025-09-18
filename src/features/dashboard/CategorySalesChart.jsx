@@ -19,7 +19,7 @@ const ChartBox = styled.div`
 
   padding: 2.4rem 3.2rem;
   grid-column: 3/ span 2; 
-  grid-row: auto;
+  grid-row: 2;
 @media(max-width:1100px){
   grid-column: 1/ -1;
   grid-row: auto;
@@ -142,22 +142,18 @@ function prepareData(startData, orders) {
 
   const data = orders
     .reduce((arr, order) => {
-      // Handle different possible data structures
       let category = "Other";
       let quantity = order.quantity || 1;
 
-      // Check if order has foods property
       if (order.foods) {
         if (typeof order.foods === 'string') {
           category = order.foods;
         } else if (order.foods.category) {
           category = order.foods.category;
         } else if (order.foods.name) {
-          // If no category, try to infer from food name
           category = inferCategoryFromName(order.foods.name);
         }
       } 
-      // Check if order has food property (alternative structure)
       else if (order.food) {
         if (typeof order.food === 'string') {
           category = order.food;
@@ -167,16 +163,13 @@ function prepareData(startData, orders) {
           category = inferCategoryFromName(order.food.name);
         }
       }
-      // Check if order has category directly
       else if (order.category) {
         category = order.category;
       }
-      // Check if order has foodCategory
       else if (order.foodCategory) {
         category = order.foodCategory;
       }
 
-      // Ensure category exists in our predefined categories
       const validCategories = startData.map(item => item.category);
       if (!validCategories.includes(category)) {
         category = "Other";
@@ -189,7 +182,6 @@ function prepareData(startData, orders) {
   return data;
 }
 
-// Helper function to infer category from food name
 function inferCategoryFromName(name) {
   const lowerName = name.toLowerCase();
   if (lowerName.includes('pizza')) return 'Pizza';
@@ -203,10 +195,10 @@ function inferCategoryFromName(name) {
   return 'Main Course';
 }
 
-// Custom tooltip component for better display
 const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0];
+    console.log(data)
     return (
       <div 
         style={{
@@ -241,7 +233,8 @@ function CategorySalesChart({ orders = [] }) {
   const { isDarkMode } = useDarkMode();
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, orders);
-
+  console.log(data);
+  
   // If no data, show a message
   if (data.length === 0) {
     return (

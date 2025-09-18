@@ -100,6 +100,8 @@ yarn preview
 ### Foods/Products Management
 - `GET /api/foods` - Get all food items/products
 - `GET /api/foods/:id` - Get specific food item
+- `POST /api/foods` - Create new food item
+- `DELETE /api/foods/:id` - Delete food item
 
 ## 🏗️ Project Structure
 

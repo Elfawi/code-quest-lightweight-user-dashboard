@@ -22,11 +22,8 @@ function CustomerForm({ customer, onCloseModal }) {
     });
     onCloseModal?.();
   }
-  function onError(errors) {
-    // console.log(errors);
-  }
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)} type="modal">
+    <Form onSubmit={handleSubmit(onSubmit)} type="modal">
       <FormRow label="Full name" error={errors?.fullname?.message}>
         <Input
           id="fullname"

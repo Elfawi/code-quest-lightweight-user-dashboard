@@ -40,6 +40,7 @@ function CustomerRow({ customer,onClick }) {
     street
   } = customer;
   const { isDeleting, deleteCustomer } = useDeleteCustomer();
+  console.log(customerid)
 const navigate = useNavigate();
   return (
     <Table.Row role="row" onClick={onClick}>

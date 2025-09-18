@@ -9,7 +9,9 @@ const StyledTable = styled.div`
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
-  grid-column:span 2 ; // for dashboard
+  grid-column:span 2 ; // for dashboar
+  grid-row: 2 ; // for dashboard
+
   @media (max-width: 600px) {
   font-size: 1rem;
   }

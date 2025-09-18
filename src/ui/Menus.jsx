@@ -127,10 +127,10 @@ Menus.propTypes = {
     children: PropTypes.node.isRequired,
 }
 Toggle.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
 }
 List.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     children: PropTypes.node.isRequired,
 }
 Button.propTypes = {
