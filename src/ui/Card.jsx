@@ -16,11 +16,21 @@ font-weight: 600;
 transform: rotate(45deg) ;
 transition: top 0.3s ease-in-out;
 color: var(--color-brand-50);
-
+transform-origin: center;
 background-color: var(--color-brand-600);
+transition: all 0.3s ease-in-out;
 `
 const Image = styled.img`
 width:100%;
+transition: all 0.3s ease-in-out;
+filter:grayscale(0.5) ;
+&:hover{
+    transform: scale(1.2);
+    filter:grayscale(0);
+}
+&:hover ~ p{
+    transform: rotate(45deg) scale(1.1);
+}
 `
 
 
@@ -36,10 +46,9 @@ function Card({category ,image,onClick}) {
         if(cardRef){
             gsap.fromTo(cardRef.current,{
                 opacity:0,
+                scale:0.5,
                 y:-100,
-                scale:0.5
-            }
-            ,{
+            },{
                 opacity:1,
                 scale:1,
                 y:0,
@@ -52,13 +61,13 @@ function Card({category ,image,onClick}) {
         <StyledCard ref={cardRef} onClick={onClick}>
         <Image loading="lazy" src={image} alt={category} />
         <P>{category}</P>
-        {/* <h4>{name}</h4> */}
         </StyledCard>
     )
 }
 Card.propTypes = {
     category: PropTypes.string.isRequired,
     image:PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired,
 }
 
 export default Card

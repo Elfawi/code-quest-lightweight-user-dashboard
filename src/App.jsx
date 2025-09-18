@@ -14,6 +14,7 @@ import Menu from "./pages/Menu";
 import Category from "./pages/Foods";
 import Login from "./pages/Login";
 import PageNotFound from "./pages/PageNotFound";
+import ProtectedRoute from "./ui/ProtectedRoute";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -29,7 +30,13 @@ function App() {
         <ReactQueryDevtools initialIsOpen={false} />
         <BrowserRouter>
         <Routes>
-        <Route element={<AppLayout/>}>
+        <Route
+              element={
+                <ProtectedRoute>
+                  <AppLayout />
+                </ProtectedRoute>
+              }
+            >
         <Route
                 index
                 element={<Navigate replace to="dashboard" />}

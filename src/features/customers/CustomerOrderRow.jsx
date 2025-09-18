@@ -1,7 +1,6 @@
 import styled, { css } from "styled-components";
 import Table from "../../ui/Table";
 import PropTypes from "prop-types";
-import Heading from "../../ui/Heading";
 import { formatCurrency } from "../../utils/helpers";
 import { format } from "date-fns";
 

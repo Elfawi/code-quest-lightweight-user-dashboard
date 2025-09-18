@@ -10,20 +10,20 @@ import Search from "../ui/Search";
 import Spinner from "../ui/Spinner";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Menu() {
-  const {foods,isLoading} = useFoods();
-  const [searchParams,setSearchParams] = useSearchParams();
-
-  const {categories,isLoadingCategories} = useCategories();
+  const [search,setSearch] = useState('');
   const navigate = useNavigate();
+  const {foods,isLoading} = useFoods();
+  const {categories,isLoadingCategories} = useCategories();
 const foodImages = Array.from(new Set(foods?.map(food=>food.image)));
+
 const categoryImages = categories?.map((category,i)=>{
   return {category,image:foodImages[i]};
 });
+let filterdCategory = categoryImages?.filter(category=>category.category.toLowerCase().includes(search.toLowerCase()));
     const headingRef = useRef();
-    const [search,setSearch] = useState('');
     useGSAP(()=>{
       if(headingRef){
         gsap.fromTo(
@@ -47,7 +47,7 @@ const categoryImages = categories?.map((category,i)=>{
     <Search search={search} setSearch={setSearch} placeholder="Search by category name"/>
   </Row>
   <CardsContainer>
-    {categoryImages?.map((category,i)=>(
+    {filterdCategory?.map((category,i)=>(
       <Card onClick={() =>{
         navigate(`/menu/${category.category.replace(" ","_")}`)
       }

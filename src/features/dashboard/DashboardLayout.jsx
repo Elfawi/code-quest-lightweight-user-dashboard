@@ -5,12 +5,16 @@ import { useCustomers } from "../customers/useCustomers";
 import { useOrders } from "../orders/useOrders";
 import SalesChart from "./SalesChart";
 import { useSearchParams } from "react-router-dom";
-import TodayOrders from "../orders/TodayOrders";
+import TodayOrdersTable from "./TodayOrdersTable";
+import CategorySalesChart from "./CategorySalesChart";
 const StyledDashboardLayout = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
-  grid-template-rows: auto auto auto;
+  /* grid-template-rows: auto auto auto; */
   gap: 2.4rem;
+  @media(max-width:1100px){
+  grid-template-rows: auto auto auto;
+}
 `;
 
 function DashboardLayout() {
@@ -29,9 +33,9 @@ function DashboardLayout() {
       <Stats
         customers={allCustomers}
         orders={allOrders}
-        cabinCount={10}
       />
-      <TodayOrders />
+      <TodayOrdersTable />
+      <CategorySalesChart orders={allOrders}/>
       <SalesChart orders={allOrders} numDays={numDays} />
     </StyledDashboardLayout>
   );

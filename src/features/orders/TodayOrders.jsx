@@ -35,6 +35,7 @@ const NoOrders = styled.p`
 `;
 const Total = styled.div`
   font-weight: 700;
+  margin-top:1.6rem ;
 `;
 function TodayOrders() {
   const { orders, isLoading } = useTodayOrders();

@@ -9,14 +9,24 @@ import { formatCurrency } from "../../utils/helpers";
 const StyledFood = styled.div`
 border-radius: var(--border-radius-lg);
 overflow: hidden;
-/* background-color:var(--color-brand-200); */
 color:var(--color-grey-800);
 border-radius:var(--border-radius-lg);
 padding:1.2rem 1.6rem ;
+display:flex ;
+flex-direction:column ;
+gap:1.4rem ;
+cursor:pointer ;
+
 `;
 const Image = styled.img`
 width:100%;
 border-radius:var(--border-radius-lg) ;
+transition: all 0.3s ease-in-out;
+filter:grayscale(0.5) ;
+&:hover{
+    transform: scale(1.1);
+    filter:grayscale(0);
+}
 `
 const Name = styled.h5`
 font-weight:700 ;
@@ -59,7 +69,7 @@ function Food({food}) {
     },[food])
     return (
         <StyledFood ref={foodRef}>
-        <Image src={image} alt={name}></Image>
+        <Image loading="lazy" src={image} alt={name}></Image>
         <FoodHead>
         <Name>{name}</Name>
         <Price>{formatCurrency(unitprice)}</Price>

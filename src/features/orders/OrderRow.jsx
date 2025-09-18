@@ -11,8 +11,8 @@ const variations = {
     border: 1px solid var(--color-grey-200);
   `,
   completed: css`
-    color: var(--color-brand-700);
-    background-color: var(--color-brand-100);
+    color: var(--color-green-700);
+    background-color: var(--color-green-100);
     border: 1px solid var(--color-grey-200);
   `,
   cancelled: css`

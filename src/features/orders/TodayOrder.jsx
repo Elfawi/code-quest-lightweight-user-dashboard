@@ -4,11 +4,15 @@ import { formatCurrency } from "../../utils/helpers";
 import { format } from "date-fns";
 const StyledTodayOrder = styled.div`
   font-size: 1.4rem;
-  padding: 0.8rem 0;
+  padding: 0.8rem;
   border-bottom: 1px solid var(--color-grey-100);
-
+  border-radius:var(--border-radius-lg) ;
   &:first-child {
     border-top: 1px solid var(--color-grey-100);
+  }
+  &:hover{
+    background-color: var(--color-grey-100);
+    cursor:pointer;
   }
 `;
 const List = styled.ul`

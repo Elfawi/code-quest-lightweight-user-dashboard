@@ -4,7 +4,7 @@ import { PAGE_SIZE } from "../utils/constants";
 
 export async function getOrders(page){
  
-    let query = supabase.from('orders').select('* , customers(fullname) , foods(name,unitprice)',{
+    let query = supabase.from('orders').select('* , customers(fullname) , foods(name,unitprice,foodid)',{
         count: "exact",
     }).order("orderdate");
     const {data:orders} = await query

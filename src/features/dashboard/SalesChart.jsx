@@ -18,7 +18,7 @@ const StyledSalesChart = styled(DashboardBox)`
   grid-column: 1 / -1;
 grid-row: 5/-1;
 margin-bottom:2.4rem ;
-  /* Hack to change grid line colors */
+overflow:hidden ;
   & .recharts-cartesian-grid-horizontal line,
   & .recharts-cartesian-grid-vertical line {
     stroke: var(--color-grey-300);
@@ -31,6 +31,7 @@ function SalesChart({ orders, numDays }) {
     start: subDays(new Date(), numDays - 1),
     end: new Date(),
   });
+  console.log(allDates)
   const data = allDates.map((date) => {
     return {
       label: format(date, "MMM dd"),
@@ -42,14 +43,14 @@ function SalesChart({ orders, numDays }) {
   
   const colors = isDarkMode
     ? {
-        ordersSales: { stroke: "#4f46e5", fill: "#4f46e5" },
-        extrasSales: { stroke: "#22c55e", fill: "#22c55e" },
+        ordersSales: { stroke: "#EA7C69", fill: "#EA7C69" },
+        foodNames: { stroke: "#22c55e", fill: "#22c55e" },
         text: "#e5e7eb",
         background: "#18212f",
       }
     : {
-        ordersSales: { stroke: "#4f46e5", fill: "#c7d2fe" },
-        extrasSales: { stroke: "#16a34a", fill: "#dcfce7" },
+        ordersSales: { stroke: "#EA7C69", fill: "#ffd2ca" },
+        foodNames: { stroke: "#16a34a", fill: "#dcfce7" },
         text: "#374151",
         background: "#fff",
       };
@@ -73,18 +74,28 @@ function SalesChart({ orders, numDays }) {
           />
           <CartesianGrid strokeDasharray="4" />
           <Tooltip
+           itemStyle={{
+            textWrap:"wrap",
+           }}
             contentStyle={{
               backgroundColor: colors.background,
+              width:'100%',
+              display:'flex',
+              flexDirection:'column',
+              justifyContent:'center',
+              overflow:'hidden',
+            
             }}
           />
           <Area
-            dataKey="totalSales"
+            dataKey="ordersSales"
             type="monotone"
             stroke={colors.ordersSales.stroke}
             fill={colors.ordersSales.fill}
             strokeWidth={2}
             name="Orders sales"
             unit="$"
+            
           />
         </AreaChart>
       </ResponsiveContainer>

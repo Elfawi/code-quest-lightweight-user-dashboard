@@ -9,8 +9,13 @@ const StyledTable = styled.div`
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
+  grid-column:span 2 ; // for dashboard
   @media (max-width: 600px) {
   font-size: 1rem;
+  }
+  @media (max-width: 1100px) {
+  grid-column:1/-1;
+  grid-row: auto ; // for dashboard
   }
 `;
 
@@ -46,9 +51,6 @@ const StyledHeader = styled(CommonRow)`
   @media (max-width: 600px) {
   font-size: 1rem;
   }
-  @media (max-width: 500px) {
-  font-size: 0.8rem;
-  }
 `;
 
 const StyledRow = styled(CommonRow)`
@@ -60,12 +62,6 @@ const StyledRow = styled(CommonRow)`
   @media (max-width: 800px) {
     padding:0.6rem 1.2rem;
   font-size: 1.2rem;
-  }
-  @media (max-width: 600px) {
-  font-size: 1rem;
-  }
-  @media (max-width: 500px) {
-  font-size: 0.8rem;
   }
 `;
 

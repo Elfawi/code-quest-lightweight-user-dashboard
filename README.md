@@ -104,45 +104,22 @@ yarn preview
 ### Authentication
 - `POST /api/auth/login` - User authentication
 - `POST /api/auth/logout` - User logout
-- `POST /api/auth/refresh` - Refresh authentication token
 - `GET /api/auth/me` - Get current user profile
 
-### Users Management
-- `GET /api/users` - Get all users with pagination
-- `GET /api/users/:id` - Get specific user by ID
-- `POST /api/users` - Create new user
-- `PUT /api/users/:id` - Update user information
-- `DELETE /api/users/:id` - Delete user account
-- `GET /api/users/search?q={query}` - Search users
+### Customers Management
+- `GET /api/customers` - Get all customers with pagination
+- `GET /api/customers/:id` - Get specific customer by ID
+- `PUT /api/customers/:id` - Update customer information
+- `DELETE /api/customers/:id` - Delete customer
 
 ### Orders Management
 - `GET /api/orders` - Get all orders with filters
 - `GET /api/orders/:id` - Get specific order details
-- `POST /api/orders` - Create new order
-- `PUT /api/orders/:id` - Update order status/details
-- `DELETE /api/orders/:id` - Cancel/delete order
 - `GET /api/orders/customer/:customerId` - Get orders by customer
-- `PATCH /api/orders/:id/status` - Update order status
-
-### Customers Management
-- `GET /api/customers` - Get all customers
-- `GET /api/customers/:id` - Get customer details
-- `POST /api/customers` - Create new customer
-- `PUT /api/customers/:id` - Update customer information
-- `DELETE /api/customers/:id` - Delete customer
 
 ### Foods/Products Management
 - `GET /api/foods` - Get all food items/products
 - `GET /api/foods/:id` - Get specific food item
-- `POST /api/foods` - Add new food item
-- `PUT /api/foods/:id` - Update food item
-- `DELETE /api/foods/:id` - Remove food item
-
-### Analytics & Reports
-- `GET /api/analytics/dashboard` - Get dashboard statistics
-- `GET /api/analytics/orders/trends` - Get order trends data
-- `GET /api/analytics/revenue` - Get revenue analytics
-- `GET /api/analytics/customers/growth` - Get customer growth data
 
 ## 🏗️ Project Structure
 
@@ -165,8 +142,6 @@ src/
 - `npm run preview` - Preview production build
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Fix ESLint errors
-- `npm test` - Run tests
-- `npm run test:coverage` - Run tests with coverage
 
 ## 🔧 Technologies Used
 
