@@ -4,7 +4,7 @@ import { PAGE_SIZE } from "../utils/constants";
 
 export async function getOrders(page){
  
-    let query = supabase.from('orders').select('* , customers(fullname) , foods(name,unitprice,foodid)',{
+    let query = supabase.from('orders').select('* , customers(fullname) , foods(name,unitprice,foodid,category)',{
         count: "exact",
     }).order("orderdate");
     const {data:orders} = await query
@@ -21,7 +21,7 @@ export async function getOrders(page){
     return {data,orders,count};
 }
 export async function getTodayOrders(){
-    const {data:orders,error,count} = await supabase.from('orders').select('* , customers(fullname) , foods(name,unitprice)',{
+    const {data:orders,error,count} = await supabase.from('orders').select('* , customers(fullname) , foods(name,unitprice,category)',{
         count: "exact",
     }).order("orderdate").eq("orderdate",new Date().toISOString().split("T")[0]);
     if(error){

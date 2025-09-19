@@ -20,18 +20,14 @@ function CategoryMenu() {
     const navigate = useNavigate();
     const {foods,isLoading} = useFoods();
     const {categories,isLoadingCategories} = useCategories();
-    console.log(foods);
     
   const foodImages = foods?.map(food=>food.image);
-  console.log(foodImages)
   const categoryImages = categories?.map((category,i)=>{
     return {category,image:foodImages[i]?? ""};
   });
-  console.log(categoryImages);
   
   let filterdCategory = categoryImages?.filter(category=>category.category.toLowerCase().includes(search.toLowerCase()));
       const headingRef = useRef();
-      console.log(filterdCategory)
       useGSAP(()=>{
         if(headingRef){
           gsap.fromTo(

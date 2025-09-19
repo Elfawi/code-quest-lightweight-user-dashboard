@@ -50,29 +50,44 @@ const startDataLight = [
     color: "#eab308",
   },
   {
-    category: "Salad",
+    category: "Salads",
     value: 0,
     color: "#84cc16",
   },
   {
-    category: "Dessert",
+    category: "Desserts",
     value: 0,
     color: "#22c55e",
   },
   {
-    category: "Beverage",
+    category: "Beverages",
     value: 0,
     color: "#14b8a6",
   },
   {
-    category: "Appetizer",
+    category: "Appetizers",
     value: 0,
     color: "#3b82f6",
   },
   {
-    category: "Main Course",
+    category: "Main Courses",
     value: 0,
     color: "#a855f7",
+  },
+  {
+    category: "Soups",
+    value: 0,
+    color: "#22ce4d",
+  },
+  {
+    category: "Asian Cuisine",
+    value: 0,
+    color: "#de6d22",
+  },
+  {
+    category: "Mexican Cuisine",
+    value: 0,
+    color: "#22c4e0",
   },
   {
     category: "Other",
@@ -98,29 +113,44 @@ const startDataDark = [
     color: "#a16207",
   },
   {
-    category: "Salad",
+    category: "Salads",
     value: 0,
     color: "#4d7c0f",
   },
   {
-    category: "Dessert",
+    category: "Desserts",
     value: 0,
     color: "#15803d",
   },
   {
-    category: "Beverage",
+    category: "Beverages",
     value: 0,
     color: "#0f766e",
   },
   {
-    category: "Appetizer",
+    category: "Appetizers",
     value: 0,
     color: "#1d4ed8",
   },
   {
-    category: "Main Course",
+    category: "Main Courses",
     value: 0,
     color: "#7e22ce",
+  },
+  {
+    category: "Soups",
+    value: 0,
+    color: "#1dbb44",
+  },
+  {
+    category: "Asian Cuisine",
+    value: 0,
+    color: "#bd5e1f",
+  },
+  {
+    category: "Mexican Cuisine",
+    value: 0,
+    color: "#21abc4",
   },
   {
     category: "Other",
@@ -144,7 +174,7 @@ function prepareData(startData, orders) {
     .reduce((arr, order) => {
       let category = "Other";
       let quantity = order.quantity || 1;
-
+console.log(order)
       if (order.foods) {
         if (typeof order.foods === 'string') {
           category = order.foods;
@@ -195,10 +225,10 @@ function inferCategoryFromName(name) {
   return 'Main Course';
 }
 
-const CustomTooltip = ({ active, payload }) => {
+const CustomTooltip = ({data:orders, active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0];
-    console.log(data)
+    console.log("orders",orders)
     return (
       <div 
         style={{
@@ -216,7 +246,7 @@ const CustomTooltip = ({ active, payload }) => {
           Orders: {data.value}
         </p>
         <p style={{ margin: 0, fontSize: '0.9em', color: 'var(--color-grey-500)' }}>
-          {((data.value / payload.reduce((sum, item) => sum + item.value, 0)) * 100).toFixed(1)}%
+          {((data.value / orders.reduce((sum, item) => sum + item.value, 0)) * 100).toFixed(1)}%
         </p>
       </div>
     );
@@ -226,7 +256,7 @@ const CustomTooltip = ({ active, payload }) => {
 CustomTooltip.propTypes = {
   active: PropTypes.bool,
   payload: PropTypes.array,
-  label: PropTypes.string,
+  data: PropTypes.array,
 }
   
 function CategorySalesChart({ orders = [] }) {
@@ -277,7 +307,7 @@ function CategorySalesChart({ orders = [] }) {
               />
             ))}
           </Pie>
-          <Tooltip content={<CustomTooltip />} />
+          <Tooltip content={<CustomTooltip data={data} />} />
           <Legend
             verticalAlign="middle"
             align="right"

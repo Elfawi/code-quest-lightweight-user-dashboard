@@ -30,8 +30,6 @@ function OrdersTable({search}) {
   if (!orders?.length) return <Empty resourceName="orders" />;
 
   const dataToShow = search ? filterdOrders.slice((currentPage-1) * PAGE_SIZE, currentPage * PAGE_SIZE) : orders
- console.log(dataToShow);
- 
   return (
       <Table columns="0.2fr 2fr 2fr 1.4fr 0.5fr 1.6fr 1.2fr 1fr">
         <Table.Header>

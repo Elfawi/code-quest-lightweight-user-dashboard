@@ -17,10 +17,8 @@ function TodayOrdersTable() {
   : Number(searchParams.get("page"));
 
    const dataToShow =orders?.slice((currentPage-1) * TODAY_ORDERS_TO_SHOW, currentPage * TODAY_ORDERS_TO_SHOW)
-   console.log(dataToShow);
-  if(isLoading){
-    return <Spinner />
-}
+  if(isLoading) return <Spinner />
+
     return (
         <StyledTable columns="0.3fr 1.4fr 1.4fr 1fr 1fr 0.5fr ">
         <Table.Header>
