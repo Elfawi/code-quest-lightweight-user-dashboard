@@ -1,6 +1,6 @@
 import Heading from "../ui/Heading";
 import Row from "../ui/Row";
-import CustomersTable from "../features/customers/customersTable";
+import CustomersTable from "../features/customers/CustomersTable";
 import { useGSAP } from "@gsap/react";
 import { useRef,useState } from "react";
 import gsap from "gsap";
