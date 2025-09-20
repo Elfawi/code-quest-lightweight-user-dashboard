@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import HeaderMenu from "./HeaderMenu";
-// import UserAvatar from "../features/authentication/UserAvatar";
-
+import PropTypes from "prop-types";
 const StyledHeader = styled.header`
   background-color: var(--color-grey-0);
   padding: 1.2rem 4.8rem;
@@ -26,4 +25,7 @@ function Header({ setIsMobileNavActive }) {
   );
 }
 
+Header.propTypes = {
+  setIsMobileNavActive: PropTypes.func.isRequired,
+};
 export default Header;
