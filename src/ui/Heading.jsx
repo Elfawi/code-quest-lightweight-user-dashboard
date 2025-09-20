@@ -29,10 +29,10 @@ const Heading = styled.h1`
 
   line-height:1.4;
   @media (max-width: 800px) {
-  font-size: 2rem;
+    font-size: 2rem;
   }
   @media (max-width: 600px) {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
   }
 `;
 
