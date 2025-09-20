@@ -16,9 +16,6 @@ const StyledTable = styled.div`
     grid-column: 1/-1;
     grid-row: auto; // for dashboard
   }
-  @media (max-width: 600px) {
-    height: 100vh;
-  }
 `;
 
 const CommonRow = styled.div`
@@ -62,8 +59,7 @@ const StyledRow = styled(CommonRow)`
     border-bottom: 1px solid var(--color-grey-100);
   }
   @media (max-width: 800px) {
-    padding: 0.6rem 1.2rem;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 `;
 
