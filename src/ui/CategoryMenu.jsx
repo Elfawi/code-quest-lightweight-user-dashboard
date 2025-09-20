@@ -29,7 +29,7 @@ function CategoryMenu() {
   let filterdCategory = categoryImages?.filter(category=>category.category.toLowerCase().includes(search.toLowerCase()));
       const headingRef = useRef();
       useGSAP(()=>{
-        if(headingRef){
+        if(headingRef.current){
           gsap.fromTo(
             headingRef.current,
             {opacity:0,y:-50, scale:0.5},

@@ -2,22 +2,22 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { createContext, useContext, useRef } from "react";
 import styled from "styled-components";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 const StyledTable = styled.div`
   border: 1px solid var(--color-grey-200);
   font-size: 1.4rem;
   background-color: var(--color-grey-0);
   border-radius: 7px;
   overflow: hidden;
-  grid-column:span 2 ; // for dashboar
-  grid-row: 2 ; // for dashboard
+  grid-column: span 2; // for dashboar
+  grid-row: 2; // for dashboard
 
-  @media (max-width: 600px) {
-  font-size: 1rem;
-  }
   @media (max-width: 1100px) {
-  grid-column:1/-1;
-  grid-row: auto ; // for dashboard
+    grid-column: 1/-1;
+    grid-row: auto; // for dashboard
+  }
+  @media (max-width: 600px) {
+    height: 100vh;
   }
 `;
 
@@ -27,12 +27,12 @@ const CommonRow = styled.div`
   column-gap: 2.4rem;
   align-items: center;
   transition: none;
-  &:hover{
+  &:hover {
     background-color: var(--color-grey-50);
-    cursor:pointer;
+    cursor: pointer;
   }
   @media (max-width: 600px) {
-    column-gap: 2rem ;
+    column-gap: 2rem;
   }
 `;
 
@@ -46,12 +46,12 @@ const StyledHeader = styled(CommonRow)`
   font-weight: 600;
   color: var(--color-grey-600);
   @media (max-width: 800px) {
-    padding:0.8rem 1.2rem;
-  letter-spacing: 0.2px;
-  font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+    letter-spacing: 0.2px;
+    font-size: 1.2rem;
   }
   @media (max-width: 600px) {
-  font-size: 1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -62,8 +62,8 @@ const StyledRow = styled(CommonRow)`
     border-bottom: 1px solid var(--color-grey-100);
   }
   @media (max-width: 800px) {
-    padding:0.6rem 1.2rem;
-  font-size: 1.2rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
   }
 `;
 
@@ -82,7 +82,7 @@ const Footer = styled.footer`
     display: none;
   }
   @media (max-width: 600px) {
-  font-size: 1rem;
+    font-size: 1rem;
   }
 `;
 
@@ -94,24 +94,26 @@ const Empty = styled.p`
 `;
 const TableContext = createContext({});
 function Table({ columns, children }) {
-    const tableRef = useRef();
-    useGSAP(() => {
-      gsap.fromTo(
-        tableRef.current,
-        { opacity: 0, y: -100 ,scale:0.8},
-        {
-          opacity: 1,
-          y: 0,
-          scale:1,
-          duration: 0.5,
-  
-          ease: "ease.out(1.5)",
-        }
-      );
-    });
+  const tableRef = useRef();
+  useGSAP(() => {
+    gsap.fromTo(
+      tableRef.current,
+      { opacity: 0, y: -100, scale: 0.8 },
+      {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.5,
+
+        ease: "ease.out(1.5)",
+      }
+    );
+  });
   return (
     <TableContext.Provider value={{ columns }}>
-      <StyledTable ref={tableRef} role="table">{children}</StyledTable>
+      <StyledTable ref={tableRef} role="table">
+        {children}
+      </StyledTable>
     </TableContext.Provider>
   );
 }
@@ -130,16 +132,16 @@ function Header({ children }) {
 Header.propTypes = {
   children: PropTypes.node.isRequired,
 };
-function Row({ children,onClick }) {
+function Row({ children, onClick }) {
   const rowRef = useRef();
   useGSAP(() => {
     gsap.fromTo(
       rowRef.current,
-      { opacity: 0, y: -20 ,scaleY:0.8},
+      { opacity: 0, y: -20, scaleY: 0.8 },
       {
         opacity: 1,
         y: 0,
-        scaleY:1,
+        scaleY: 1,
         duration: 0.5,
 
         ease: "ease.out(1.5)",
@@ -161,10 +163,10 @@ function Body({ data, render }) {
   if (!data.length) return <Empty>No data to show at the moment</Empty>;
   return <StyledBody>{data.map(render)}</StyledBody>;
 }
-Body.propTypes ={
+Body.propTypes = {
   data: PropTypes.array.isRequired,
   render: PropTypes.func.isRequired,
-}
+};
 
 Table.Header = Header;
 Table.Row = Row;

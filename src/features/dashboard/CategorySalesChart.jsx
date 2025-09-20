@@ -174,7 +174,7 @@ function prepareData(startData, orders) {
     .reduce((arr, order) => {
       let category = "Other";
       let quantity = order.quantity || 1;
-console.log(order)
+// console.log(order)
       if (order.foods) {
         if (typeof order.foods === 'string') {
           category = order.foods;
@@ -228,7 +228,7 @@ function inferCategoryFromName(name) {
 const CustomTooltip = ({data:orders, active, payload }) => {
   if (active && payload && payload.length) {
     const data = payload[0];
-    console.log("orders",orders)
+    // console.log("orders",orders)
     return (
       <div 
         style={{
@@ -263,7 +263,7 @@ function CategorySalesChart({ orders = [] }) {
   const { isDarkMode } = useDarkMode();
   const startData = isDarkMode ? startDataDark : startDataLight;
   const data = prepareData(startData, orders);
-  console.log(data);
+  // console.log(data);
   
   // If no data, show a message
   if (data.length === 0) {

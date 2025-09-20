@@ -49,20 +49,27 @@ function Sidebar({isMobileNavActive}) {
     {
       opacity: 0,
       x: -200,
-    }, 
+    },
     {
       opacity: 1,
       x: 0,
-      ease: "elastic.out(0.5)",duration:0.5
+      ease: "elastic.out(0.5)",
+      duration: 0.5,
+      paused: true 
     }
   );
   useGSAP(() => {
-      isMobileNavActive ? sidebarAnimation.play() : sidebarAnimation.reverse()
+    if (isMobileNavActive) {
+      sidebarAnimation.play();
+    } else {
+      sidebarAnimation.reverse();
+    }
     
-  });
+    return () => sidebarAnimation.kill();
+  }, [isMobileNavActive]); 
+
   return (
     <StyledSidebar ref={sidebarRef} isMobileNavActive={isMobileNavActive}>
-      {/* <Logo /> */}
       <div>Restaurant Name</div>
       <MainNav />
     </StyledSidebar>
