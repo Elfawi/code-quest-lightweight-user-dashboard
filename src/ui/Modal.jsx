@@ -1,9 +1,15 @@
-import { cloneElement, createContext, useContext, useRef, useState } from "react";
+import {
+  cloneElement,
+  createContext,
+  useContext,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import { HiXMark } from "react-icons/hi2";
 import styled from "styled-components";
 import { useOutSideClick } from "../hooks/useOutsideClick";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 const StyledModal = styled.div`
@@ -16,6 +22,17 @@ const StyledModal = styled.div`
   box-shadow: var(--shadow-lg);
   padding: 3.2rem 4rem;
   transition: all 0.5s;
+  @media (max-width: 800px) {
+    width: 90%;
+    padding: 4.4rem 2.6rem;
+    overflow: hidden;
+  }
+  /* & form {
+    @media (max-width: 800px) {
+      width: 90%;
+      padding: 4.4rem 2.6rem;
+    }
+  } */
 `;
 
 const Overlay = styled.div`
@@ -78,24 +95,23 @@ function Window({ children, name }) {
   const modalRef = useRef();
   useGSAP(() => {
     if (modalRef.current) {
-      gsap.to(
-        modalRef.current,
-        {
-          top: "50%",
-          duration: 0,
-          ease:"power1.in",
-        }
-      );
+      gsap.to(modalRef.current, {
+        top: "50%",
+        duration: 0,
+        ease: "power1.in",
+      });
     }
   }, [openName]);
 
   if (openName !== name) return null;
   return createPortal(
     <Overlay>
-      <StyledModal ref={(el) => {
-        ref.current = el;  // For useOutsideClick
-        modalRef.current = el;  // For GSAP animation
-      }}>
+      <StyledModal
+        ref={(el) => {
+          ref.current = el; // For useOutsideClick
+          modalRef.current = el; // For GSAP animation
+        }}
+      >
         <Button onClick={close}>
           <HiXMark />
         </Button>
@@ -107,11 +123,11 @@ function Window({ children, name }) {
 }
 Modal.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 Window.propTypes = {
   children: PropTypes.node.isRequired,
   name: PropTypes.string.isRequired,
-}
+};
 Modal.Open = Open;
 Modal.Window = Window;
 
