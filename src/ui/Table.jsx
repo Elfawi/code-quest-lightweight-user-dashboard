@@ -61,6 +61,9 @@ const StyledRow = styled(CommonRow)`
   @media (max-width: 800px) {
     font-size: 1.4rem;
   }
+  @media (max-width: 600px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const StyledBody = styled.section`
