@@ -1,24 +1,31 @@
 import styled from "styled-components";
 import DarkModeToggle from "./DarkModeToggle";
 import MobileNavButton from "./MobileNavButton";
-import Logout from "../features/authentication/Logout"
+import Logout from "../features/authentication/Logout";
 import PropTypes from "prop-types";
 const StyledHeaderMenu = styled.ul`
   display: flex;
   gap: 0.4rem;
   align-items: center;
+  @media (max-width: 800px) {
+    gap: 2rem;
+  }
 `;
 
-function HeaderMenu({setIsMobileNavActive}) {
+function HeaderMenu({ setIsMobileNavActive }) {
   return (
     <StyledHeaderMenu>
       <li>
-      <MobileNavButton onClick={()=>setIsMobileNavActive(prev => !prev)}/>
+        <MobileNavButton
+          onClick={() => setIsMobileNavActive((prev) => !prev)}
+        />
       </li>
       <li>
         <DarkModeToggle />
       </li>
-      <li><Logout /></li>
+      <li>
+        <Logout />
+      </li>
     </StyledHeaderMenu>
   );
 }

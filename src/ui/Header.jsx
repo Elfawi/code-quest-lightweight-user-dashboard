@@ -15,13 +15,13 @@ const StyledHeader = styled.header`
     padding: 1.2rem 2.4rem;
   }
   @media (max-width: 800px) {
-    padding: 1.2rem ;
+    padding: 1.2rem;
   }
 `;
-function Header({setIsMobileNavActive}) {
+function Header({ setIsMobileNavActive }) {
   return (
     <StyledHeader>
-      <HeaderMenu setIsMobileNavActive={setIsMobileNavActive}/>
+      <HeaderMenu setIsMobileNavActive={setIsMobileNavActive} />
     </StyledHeader>
   );
 }
